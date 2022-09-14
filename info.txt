@@ -1,0 +1,17 @@
+DBSDW - https://dbsdw.drooler.tk
+________________________________
+
+Desc:
+Website for links and short URL's to DBSDW websites
+
+Services used:
+Cloudflare (https://cloudflare.com) - protection and email doimains
+Freenom (https://freenom.com) - website domain
+Replit (https://replit.com) - hosting, IDE
+
+Licensing status:
+Name (DBSDW) - royalty-free name 
+Code (website) - unlicensed
+Images (icon) - free-to-use asset
+
+Currently no rights reserved
