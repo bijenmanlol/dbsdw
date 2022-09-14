@@ -1,0 +1,1 @@
+window.location.href = "https://donboscosdw.smartschool.be/";
