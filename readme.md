@@ -2,7 +2,7 @@
 
 ### Desc:
 
-Website for links and short URL's to DBSDW websites
+Website for links and short URL's to DBSDW websites and other DBSDW related webapps
 
 
 ### Services used:
