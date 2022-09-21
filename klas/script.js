@@ -2,9 +2,12 @@ var myCanvas = document.createElement('canvas');
 let nummer;
 let keuze;
 let pnaam;
+let ai = 0;
 
 document.getElementById("leerling").appendChild(myCanvas);
 document.getElementById("leerling").innerHTML = "KLIK HIER";
+
+let gekozen = [];
 
 let leerlingen = {
 
@@ -27,19 +30,51 @@ let leerlingen = {
 
 }
 
-function random() {
-  document.getElementById("leerling").disabled = true;
-  document.getElementById("leerling").innerHTML = "LOADING...";
-  nummer = Math.floor(Math.random() * (17 - 1) + 1);
-  keuze = leerlingen[nummer];
-  setTimeout(function() {
-    confetti();
-    document.getElementById("leerling").disabled = false;
-    document.getElementById("leerling").innerHTML = keuze;
-    setTimeout(function() {
-      pnaam = '<p>' + keuze + '</p>';
-      document.getElementById("leerling").innerHTML = "KLIK HIER";
-      document.getElementById("lijst").innerHTML = document.getElementById("lijst").innerHTML + pnaam
-    }, 2000)
-  }, 5000)
+letter = 0;
+
+function shuffle(array) {
+
+  let i = array.length,
+    j = 0,
+    temp;
+
+  while (i--) {
+
+    j = Math.floor(Math.random() * (i + 1));
+
+
+    temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+
+  }
+  return array;
+}
+
+let ranNums = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
+
+function kiezer() {
+    document.getElementById("leerling").disabled = true;
+    document.getElementById("leerling").innerHTML = "LOADING...";
+    
+    keuze = leerlingen[ranNums[letter]];
+    if (keuze == null) {
+      
+    document.getElementById("leerling").innerHTML = "LIJST VOL";
+    document.getElementById("leerling").disabled = true;
+    document.getElementById("leerling").onclick = "";
+    } else {
+
+      setTimeout(function() {
+        confetti();
+        document.getElementById("leerling").disabled = false;
+        document.getElementById("leerling").innerHTML = keuze;
+        setTimeout(function() {
+          pnaam = '<p>' + keuze + '</p>';
+          document.getElementById("lijst").innerHTML = document.getElementById("lijst").innerHTML + pnaam
+          document.getElementById("leerling").innerHTML = "KLIK HIER";
+          letter++;
+        }, 2000)
+      }, 5000)
+    }
 }
