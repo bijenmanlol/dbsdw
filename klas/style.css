@@ -20,6 +20,18 @@ body{
   font-size: 300%;
 }
 
+#return{
+  color: #ffffff;
+  float: left;
+  position: relative;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+#return:hover{
+  color: #cacaca;
+}
+
 #leerling{
   border-radius: 20px;
   width: 250px;
