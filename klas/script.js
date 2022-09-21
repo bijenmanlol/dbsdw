@@ -3,6 +3,10 @@ let nummer;
 let keuze;
 let pnaam;
 let ai = 0;
+let fastmode = false;
+let time1 = 2000;
+let time2 = 5000;
+
 
 document.getElementById("leerling").appendChild(myCanvas);
 document.getElementById("leerling").innerHTML = "KLIK HIER";
@@ -54,27 +58,34 @@ function shuffle(array) {
 let ranNums = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]);
 
 function kiezer() {
-    document.getElementById("leerling").disabled = true;
-    document.getElementById("leerling").innerHTML = "LOADING...";
-    
-    keuze = leerlingen[ranNums[letter]];
-    if (keuze == null) {
-      
+  if (fastmode == false) {
+    time1 = 2000;
+    time2 = 5000;
+  } else {
+    time1 = 75;
+    time2 = 200;
+  }
+  document.getElementById("leerling").disabled = true;
+  document.getElementById("leerling").innerHTML = "LOADING...";
+
+  keuze = leerlingen[ranNums[letter]];
+  if (keuze == null) {
+
     document.getElementById("leerling").innerHTML = "LIJST VOL";
     document.getElementById("leerling").disabled = true;
     document.getElementById("leerling").onclick = "";
-    } else {
+  } else {
 
+    setTimeout(function() {
+      confetti();
+      document.getElementById("leerling").disabled = false;
+      document.getElementById("leerling").innerHTML = keuze;
       setTimeout(function() {
-        confetti();
-        document.getElementById("leerling").disabled = false;
-        document.getElementById("leerling").innerHTML = keuze;
-        setTimeout(function() {
-          pnaam = '<p>' + keuze + '</p>';
-          document.getElementById("lijst").innerHTML = document.getElementById("lijst").innerHTML + pnaam
-          document.getElementById("leerling").innerHTML = "KLIK HIER";
-          letter++;
-        }, 2000)
-      }, 5000)
-    }
+        pnaam = '<p>' + keuze + '</p>';
+        document.getElementById("lijst").innerHTML = document.getElementById("lijst").innerHTML + pnaam
+        document.getElementById("leerling").innerHTML = "KLIK HIER";
+        letter++;
+      }, time1)
+    }, time2)
+  }
 }
